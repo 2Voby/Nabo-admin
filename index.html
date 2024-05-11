@@ -4,8 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nabo - admin</title>
+    <link rel="stylesheet" href="styles/dropStyles.css" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/preloader.css" />
+    <link rel="stylesheet" href="styles/components/header.css" />
+    <link rel="stylesheet" href="styles/components/loginForm.css" />
+    <script
+      src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"
+      defer
+    ></script>
+    <script src="scripts/index.js" type="module" defer></script>
   </head>
   <body>
-    <main></main>
+    <header class="header">
+      <div class="header__container">
+        <div class="header__content">
+          <div class="header__logo"><img src="img/logo.png" alt="" /></div>
+          <div class="header__controlls controlls-header"></div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="page__container">
+        <div class="login-form-wrapper hidden">
+          <form id="login-form" class="login-form hidden" action="">
+            <h3 class="login-form__title">Welcome to admin panel</h3>
+            <p class="login-form__text">Enter your login</p>
+            <input
+              class="login-form__input login-form__input-login"
+              type="text"
+              placeholder="login"
+            />
+            <button class="login-form__button login-form__button-submit">
+              Next
+            </button>
+            <button class="login-form__button login-form__button-exit">
+              exit
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
   </body>
 </html>

@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  font-family: "Albert Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 16px;
+  font-style: normal;
+}
+
+[class*="__container"] {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+button {
+  display: block;
+  cursor: pointer;
+}
+
+/* admin */
+
+.filter-menu {
+  margin-top: 20px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-menu select {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 15px 10px 10px;
+  border-radius: 15px;
+}
+
+.filter-menu input {
+  padding: 10px 15px 10px 15px;
+  border: 1px solid #000;
+  border-radius: 15px;
+}
+
+/* filter body */
+.filter-body {
+  border: 2px solid #000;
+  min-height: 500px;
+  margin-top: 40px;
+  border-radius: 20px;
+  padding: 20px 20px;
+}
+@media (max-width: 426px) {
+  .filter-body {
+    padding: 5px 5px;
+  }
+}
+
+.filter-body__item {
+  border: 1px solid #000;
+  border-radius: 20px;
+  display: flex;
+  padding: 10px 10px;
+  gap: 20px;
+}
+
+.filter-body__item:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.filter-body__item h3 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.filter-body__item .user-item__avatar {
+  height: 80px;
+  flex: 0 0 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.filter-body__item .item-content .item-content__id {
+  color: #868686;
+  font-size: 14px;
+  font-weight: 600;
+}
+.filter-body__item .item-content .item-content__name {
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+
+.filter-body__item .item-content .item-content__role {
+  padding: 5px 10px;
+  background-color: #c46cfb;
+  max-width: max-content;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+.filter-body__item .item-content .item-content__text {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 2px;
+  text-wrap: break-word;
+}
+.filter-body__item .item-content .item-content__text span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .filter-body__item .user-item__avatar {
+    height: 50px;
+    flex: 0 0 50px;
+  }
+}
+
+@media (max-width: 425px) {
+  .filter-body__item .item-content .item-content__id {
+    font-size: 12px;
+  }
+  .filter-body__item .item-content .item-content__name {
+    font-size: 20px;
+  }
+  .filter-body__item .item-content .item-content__text {
+    font-size: 14px;
+  }
+  .filter-body__item .item-content .item-content__text span {
+    font-size: 14px;
+  }
+}
