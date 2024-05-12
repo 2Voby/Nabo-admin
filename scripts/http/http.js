@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:5050/rest";
+// const API_URL = "http://localhost:5050/rest";
+const API_URL = "https://nabo.pindocket.com/rest";
 
 const $api = axios.create({
   withCredentials: false,
