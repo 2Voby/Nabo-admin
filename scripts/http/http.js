@@ -1,5 +1,5 @@
-// const API_URL = "http://localhost:5050/rest";
-const API_URL = "https://nabo.pindocket.com/rest";
+const API_URL = "http://localhost:5050/rest";
+// const API_URL = "https://nabo.pindocket.com/rest";
 
 const $api = axios.create({
   withCredentials: false,
@@ -11,33 +11,15 @@ $api.interceptors.request.use((config) => {
   return config;
 });
 
-$api.interceptors.response.use(
-  (config) => {
-    return config;
-  },
-  async (error) => {
-    const originalRequest = error.config;
-    if (
-      error.response.status == 401 &&
-      error.config &&
-      !error.config._isRetry
-    ) {
-      originalRequest._isRetry = true;
-    }
-    throw error;
-  }
-);
-
 export async function login(login, password = null) {
   try {
     let response = await $api.post(`/v1/unauthorized/login`, {
       login: login,
       password: password,
     });
-    // if (response.status == 200 || response.statusText == "OK") {
-    //   console.log(response);
-    //   localStorage.setItem("token", response.data.user.accessToken);
-    // }
+    if (response.status == 200 || response.statusText == "OK") {
+      localStorage.setItem("token", response.data.user.accessToken);
+    }
     return response;
   } catch (error) {
     console.log(error);
