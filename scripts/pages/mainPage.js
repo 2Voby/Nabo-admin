@@ -20,6 +20,8 @@ export async function mainPage() {
       showAddress();
     } else if (selected == "parcel") {
       showParcels();
+    } else if (selected == "reseivers-req") {
+      showReceiversRequests();
     }
   });
   showUsers();
@@ -31,6 +33,7 @@ function createMainPageHtml() {
       <option value="users">Users</option>
       <option value="address">Addresses</option>
       <option value="parcel">Parcel</option>
+      <option value="reseivers-req">Receiver Requests</option>
     </select>
     <!-- <select name="" id="">
     </select> 
@@ -78,6 +81,51 @@ async function showUsers() {
     <div class="user-item__infoButtons"></div>`;
 
     filterBody.appendChild(userElement);
+  });
+}
+
+async function showReceiversRequests() {
+  let filterBody = document.querySelector(".filter-body");
+  if (!filterBody) {
+    return;
+  }
+
+  let response = await http.getReceiversRequests();
+  if (response.status != 200) {
+    return alert("Error while getting information");
+  }
+  let requestsArray = response.data;
+  console.log(requestsArray);
+  filterBody.innerHTML = "";
+  requestsArray.forEach((request) => {
+    let userRequestElement = document.createElement("div");
+    userRequestElement.classList.add("filter-body__item", "user-item");
+
+    request.requestedDocuments.documents.forEach((document) => {
+      userRequestElement.innerHTML += `<img src=${document.url}>`;
+    });
+
+    userRequestElement.innerHTML += `<div class="user-item__avatar">
+    <img src="${request.user.avatarUrl}" alt="" />
+    </div>
+    <div class="user-item__content item-content">
+      <p class="item-content__id">${request.user._id}</p>
+      <h3 class="item-content__name">${
+        request.user.firstname + " " + request.user.lastname
+      }</h3>
+      <h3 class="item-content__role receiver">${UserStatusToStr(
+        request.user.status
+      )}</h3>
+      <p class="item-content__text item-content__email">
+        Email: <span>${request.user.email}</span>
+      </p>
+      <p class="item-content__text item-content__phone">
+        Phone: <span>${request.user.phoneNumber}</span>
+      </p>
+    </div>
+    <div class="user-item__infoButtons"></div>`;
+
+    filterBody.appendChild(userRequestElement);
   });
 }
 

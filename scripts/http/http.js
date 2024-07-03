@@ -17,7 +17,10 @@ export async function login(login, password = null) {
       login: login,
       password: password,
     });
-    if (response.status == 200 || response.statusText == "OK") {
+    if (
+      (response.status == 200 || response.statusText == "OK") &&
+      response.data?.user?.accessToken
+    ) {
       localStorage.setItem("token", response.data.user.accessToken);
     }
     return response;
@@ -76,6 +79,16 @@ export async function getAddresses() {
 export async function getParcels() {
   try {
     let response = await $api.get("/v1/admin/getAllParcels");
+    return response;
+  } catch (error) {
+    console.log(error.response?.data);
+    return error.response;
+  }
+}
+
+export async function getReceiversRequests() {
+  try {
+    let response = await $api.get("/v1/admin/getReceiverRequests");
     return response;
   } catch (error) {
     console.log(error.response?.data);
